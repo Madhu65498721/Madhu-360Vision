@@ -1,0 +1,484 @@
+/* =========================
+   MAIN DASHBOARD
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #10131a;
+  color: white;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.dashboard {
+  min-height: 100vh;
+  background: #10131a;
+  overflow: hidden;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.top-header {
+  height: 75px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 28px;
+
+  background: #171b24;
+  border-bottom: 1px solid #2b303b;
+}
+
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+
+.logo-box {
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: #6c4cff;
+
+  font-size: 14px;
+  font-weight: bold;
+}
+
+
+.logo-section h1 {
+  margin: 0;
+
+  font-size: 21px;
+  font-weight: 600;
+}
+
+
+.logo-section p {
+  margin: 4px 0 0;
+
+  font-size: 12px;
+  color: #8f96a6;
+}
+
+
+.system-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 12px;
+  font-weight: bold;
+
+  color: #aeb5c3;
+}
+
+
+.status-dot {
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+
+  background: #35d07f;
+}
+
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.dashboard-content {
+  height: calc(100vh - 115px);
+
+  padding: 22px;
+
+  overflow: auto;
+}
+
+
+.video-grid {
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+
+  gap: 18px;
+}
+
+
+/* =========================
+   VIDEO CARD
+========================= */
+
+.video-card {
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  background: #171b24;
+
+  border: 1px solid #2b303b;
+
+  border-radius: 12px;
+
+  overflow: hidden;
+}
+
+
+.video-header {
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 14px;
+
+  background: #1d222c;
+
+  font-size: 12px;
+  font-weight: bold;
+
+  color: #dce1eb;
+}
+
+
+.live-badge {
+  padding: 4px 8px;
+
+  border-radius: 5px;
+
+  background: #3a2630;
+
+  color: #ff7f8d;
+
+  font-size: 10px;
+}
+
+
+/* =========================
+   VIDEO SCREEN
+========================= */
+
+.video-screen {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #252b38 0%,
+      #151922 60%,
+      #0d1016 100%
+    );
+}
+
+
+.video-placeholder {
+  text-align: center;
+
+  color: #8c94a5;
+}
+
+
+.video-placeholder .camera-icon {
+  margin-bottom: 12px;
+
+  font-size: 40px;
+
+  color: #6c4cff;
+}
+
+
+.video-placeholder h2 {
+  margin: 0;
+
+  font-size: 16px;
+
+  color: #c6ccd7;
+}
+
+
+.video-placeholder p {
+  margin-top: 7px;
+
+  font-size: 12px;
+
+  color: #6f7787;
+}
+
+
+/* =========================
+   LEFT CONTROL PANEL
+========================= */
+
+.control-panel {
+  position: fixed;
+
+  left: 0;
+  top: 75px;
+  bottom: 40px;
+
+  z-index: 100;
+
+  background: #171b24;
+
+  border-right: 1px solid #2b303b;
+
+  transition: width 0.25s ease;
+
+  box-shadow: 5px 0 20px rgba(0, 0, 0, 0.25);
+}
+
+
+.control-panel.open {
+  width: 260px;
+}
+
+
+.control-panel.closed {
+  width: 0;
+  border-right: none;
+}
+
+
+/* =========================
+   ARROW BUTTON
+========================= */
+
+.panel-toggle {
+  position: absolute;
+
+  top: 25px;
+  right: -32px;
+
+  width: 32px;
+  height: 52px;
+
+  border: 1px solid #2b303b;
+  border-left: none;
+
+  border-radius: 0 8px 8px 0;
+
+  background: #171b24;
+
+  color: white;
+
+  font-size: 27px;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.panel-toggle:hover {
+  background: #252b38;
+}
+
+
+/* =========================
+   PANEL CONTENT
+========================= */
+
+.panel-content {
+  width: 260px;
+
+  height: 100%;
+
+  padding: 25px 20px;
+
+  overflow-y: auto;
+}
+
+
+.panel-title {
+  margin-bottom: 30px;
+}
+
+
+.panel-title h2 {
+  margin: 0;
+
+  font-size: 19px;
+}
+
+
+.panel-title p {
+  margin: 5px 0 0;
+
+  color: #777f90;
+
+  font-size: 12px;
+}
+
+
+/* =========================
+   CONTROL SECTIONS
+========================= */
+
+.control-section {
+  padding-bottom: 22px;
+
+  margin-bottom: 22px;
+
+  border-bottom: 1px solid #292e39;
+}
+
+
+.control-section h3 {
+  margin: 0 0 14px;
+
+  font-size: 12px;
+
+  text-transform: uppercase;
+
+  color: #8f97a8;
+
+  letter-spacing: 0.7px;
+}
+
+
+/* =========================
+   CHECKBOXES
+========================= */
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 9px 0;
+
+  cursor: pointer;
+
+  color: #d9dee7;
+
+  font-size: 14px;
+}
+
+
+.checkbox-row input {
+  width: 17px;
+  height: 17px;
+
+  accent-color: #6c4cff;
+
+  cursor: pointer;
+}
+
+
+.checkbox-row:hover {
+  color: white;
+}
+
+
+/* =========================
+   PANEL STATUS
+========================= */
+
+.panel-status {
+  padding: 14px;
+
+  border-radius: 9px;
+
+  background: #11151c;
+}
+
+
+.status-title {
+  margin-bottom: 12px;
+
+  font-size: 10px;
+
+  font-weight: bold;
+
+  color: #737b8b;
+
+  letter-spacing: 1px;
+}
+
+
+.status-item {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 9px;
+
+  font-size: 11px;
+
+  color: #9da5b4;
+}
+
+
+.small-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #35d07f;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.bottom-bar {
+  position: fixed;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 20px;
+
+  background: #171b24;
+
+  border-top: 1px solid #2b303b;
+
+  color: #687181;
+
+  font-size: 10px;
+}
